@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 // import {mailProject} from './mailProject';
-import AuthContext, {AuthProvider,AuthConsumer} from './Context/AuthContext';
-
+import {AuthProvider} from './Context/AuthContext';
+import Child1 from './Child1';
+import Child2 from './Child2';
 class App extends Component {
 
   constructor(props){
@@ -65,9 +66,9 @@ class App extends Component {
   render (){
     return(
       <div>
-      <h1>App Component</h1>
+      <h1>App Componentttt</h1>
         <AuthProvider>
-            <Child/>
+            <Child1/>
             <Child2/>
         </AuthProvider>
 
@@ -99,47 +100,12 @@ class App extends Component {
     )
   };
 }
-class Child extends Component {
-  
-  render(){
-    const {userName,isAuthenticated,logIn,logOut} = this.context;
-    console.log(this.context)
-    return(
-        <div className="child1Style">
-            <h1>Child Component</h1>
-            <h1>Username : {userName}</h1>
-            <h1> Auth : {isAuthenticated ? "User is isAuthenticated" : "User is not isAuthenticated"}</h1>
-            <button onClick={logIn}>Log In</button>
-            <button onClick={logOut}> Log Out</button>
-        </div>
-    )
-  }
-}
-
-class Child2 extends Component{
-render(){
-  return(
-    <AuthConsumer> 
-        {
-          props => {const {userName,isAuthenticated,logIn,logOut} = props;
-          return(
-            <div className="child2Style">
-            <h1>Child 2 Component</h1>
-            <h1>Username : {userName}</h1>
-            <h1> Auth : {isAuthenticated ? "User is isAuthenticated" : "User is not isAuthenticated"}</h1>
-            <button onClick={logIn}>Log In</button>
-            <button onClick={logOut}> Log Out</button>
-        </div>
-          )
-        }
-        }
-    </AuthConsumer>
-  )
-}
-}
 
 
-Child.contextType = AuthContext;
+
+
+
+//Child.contextType = AuthContext;
 
 
 
